@@ -30,7 +30,7 @@ namespace ConsumableMonitor
                 //.WithSimpleSchedule(x => x
                 //    .WithIntervalInSeconds(1)
                 //    .WithRepeatCount(10))
-                .WithCronSchedule("0/5 * * * * ?")
+                .WithCronSchedule("0 0 9 ? * MON") //在每星期一上午9点执行（年份通常 省略）
                 .Build();
 
 
