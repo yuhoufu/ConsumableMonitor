@@ -104,7 +104,7 @@ namespace ConsumableMonitor
             IList<MailboxAddress> toAddressList = new List<MailboxAddress>();   // 收件人邮箱列表
             IList<MailboxAddress> ccAddressList = new List<MailboxAddress>();   // 抄送人邮箱列表
 
-            toAddressList.Add(new MailboxAddress("耗材管理员", "1981250700@qq.com"));      //添加接收人
+            toAddressList.Add(new MailboxAddress("耗材管理员", "jiahao.zhu@continental-corporation.com"));      //添加接收人 --暂时设置为硬编码，后期采取数据库获取
             ccAddressList.Add(new MailboxAddress("抄送人", "yuhoufu@mthorizon.com"));  //添加抄送人
 
             string title = "耗材库存-周提醒";                            //主题
