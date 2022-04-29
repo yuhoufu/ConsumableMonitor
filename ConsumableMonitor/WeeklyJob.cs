@@ -44,6 +44,18 @@ namespace ConsumableMonitor
             List<Consumable> listConsumable = JsonConvert.DeserializeObject<List<Consumable>>(jobject["consumables"].ToString());
             Meta meta = JsonConvert.DeserializeObject<Meta>(jobject["meta"].ToString());
 
+            await Console.Out.WriteLineAsync($"Count：{count}");
+            await Console.Out.WriteLineAsync($"Count：{meta.Count}");
+            await Console.Out.WriteLineAsync($"Count：{listConsumable.Count}");
+
+            if (meta.Count == 0)
+            {
+                await Console.Out.WriteLineAsync($"没有需补货的库存。");
+                return;
+            }
+
+
+
 
             //用于支持gb2312         
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -92,12 +104,10 @@ namespace ConsumableMonitor
             IList<MailboxAddress> toAddressList = new List<MailboxAddress>();   // 收件人邮箱列表
             IList<MailboxAddress> ccAddressList = new List<MailboxAddress>();   // 抄送人邮箱列表
 
-            toAddressList.Add(new MailboxAddress("接收人", "1981250700@qq.com"));      //添加接收人
+            toAddressList.Add(new MailboxAddress("耗材管理员", "1981250700@qq.com"));      //添加接收人
             ccAddressList.Add(new MailboxAddress("抄送人", "yuhoufu@mthorizon.com"));  //添加抄送人
 
-            Regex r = new Regex(@"^\s*([\.A-Za-z0-9_-]+(\.\w+)*@(.+\.)+\w{2,5})\s*$");
-
-            string title = "耗材补货周提醒";                            //主题
+            string title = "耗材库存-周提醒";                            //主题
             string content = $"<div>你好，耗材有<strong>{listConsumable.Count}</strong>项需补货，详情见附件！</div>";   //内容
             string attachmentPathAndName = null;
             FileInfo file = new FileInfo(fileName);
@@ -112,9 +122,7 @@ namespace ConsumableMonitor
             mailMsg = EmailHelper.SendEmail(message);
 
 
-            await Console.Out.WriteLineAsync($"Count：{count}");
-            await Console.Out.WriteLineAsync($"Count：{meta.Count}");
-            await Console.Out.WriteLineAsync($"Count：{listConsumable.Count}");
+            
             await Console.Out.WriteLineAsync($"mail：{mailMsg}");
             await Task.CompletedTask;
         }
