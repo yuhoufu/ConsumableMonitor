@@ -26,14 +26,14 @@ namespace ConsumableMonitor
         /// <returns></returns>
         public async Task Execute(IJobExecutionContext context)
         {
-            var ConsumableCount1 = Convert.ToInt32(context.JobDetail.JobDataMap["ConsumableCount1"]);
-            context.JobDetail.JobDataMap["ConsumableCount1"] = (ConsumableCount1 + 1).ToString();
+            var WeeklyCount = Convert.ToInt32(context.JobDetail.JobDataMap["WeeklyCount"]);
+            context.JobDetail.JobDataMap["WeeklyCount"] = (WeeklyCount + 1).ToString();
 
-            //SavePortData($"execute {ConsumableCount1} ConsumableCount1");
-            //Log4NetHelper.Instance.Info($"execute {ConsumableCount1} ConsumableCount1");
+            //SavePortData($"execute {WeeklyCount} WeeklyCount");
+            //Log4NetHelper.Instance.Info($"execute {WeeklyCount} WeeklyCount");
 
 
-            await Console.Out.WriteLineAsync($"execute {ConsumableCount1} times");
+            await Console.Out.WriteLineAsync($"WeeklyJob: execute {WeeklyCount} times");
 
             //调用Get方法
             string result = GetDataByWebApi.RequestData("http://localhost:2020/server/api/consumables/getconsumablesbyminstock");
@@ -44,9 +44,9 @@ namespace ConsumableMonitor
             List<Consumable> listConsumable = JsonConvert.DeserializeObject<List<Consumable>>(jobject["consumables"].ToString());
             Meta meta = JsonConvert.DeserializeObject<Meta>(jobject["meta"].ToString());
 
-            await Console.Out.WriteLineAsync($"Count：{count}");
-            await Console.Out.WriteLineAsync($"Count：{meta.Count}");
-            await Console.Out.WriteLineAsync($"Count：{listConsumable.Count}");
+            //await Console.Out.WriteLineAsync($"Count：{count}");
+            //await Console.Out.WriteLineAsync($"Count：{meta.Count}");
+            //await Console.Out.WriteLineAsync($"Count：{listConsumable.Count}");
 
             if (meta.Count == 0)
             {
