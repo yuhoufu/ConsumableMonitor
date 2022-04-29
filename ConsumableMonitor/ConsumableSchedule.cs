@@ -16,13 +16,13 @@ namespace ConsumableMonitor
             jobDataMap.Add("ConsumableCount1", "1");
 
             // 创建一个作业
-            IJobDetail job = JobBuilder.Create<WeeklyJob>()
+            IJobDetail weeklyJob = JobBuilder.Create<WeeklyJob>()
                 .WithIdentity("ConsumableJobTest1", "ConsumableJobGroupTest2")
                 .UsingJobData(jobDataMap)
                 .Build();
 
             // 创建一个触发器
-            ITrigger trigger = TriggerBuilder.Create()
+            ITrigger weeklyTrigger = TriggerBuilder.Create()
                 .WithIdentity("ConsumableTriggerTest1", "ConsumableTriggerGroupTest1")
                 .StartNow()
                 //.WithSimpleSchedule(x => x
@@ -30,10 +30,12 @@ namespace ConsumableMonitor
                 //    .WithRepeatCount(10))
                 .WithCronSchedule("0/5 * * * * ?")
                 .Build();
-            var jobExist = scheduler.CheckExists(job.Key).Result;
+
+
+            var jobExist = scheduler.CheckExists(weeklyJob.Key).Result;
             if (!jobExist)
             {
-                 scheduler.ScheduleJob(job, trigger).Wait();
+                 scheduler.ScheduleJob(weeklyJob, weeklyTrigger).Wait();
             }
         }
 
