@@ -28,7 +28,7 @@ namespace Untility
         /// <summary>
         /// 默认发件人
         /// </summary> 
-        private static MailboxAddress fromAddress = new MailboxAddress("发送邮箱", "lims@mthorizon.com");
+        private static MailboxAddress fromAddress = new MailboxAddress("实验室管理系统", "lims@mthorizon.com");
 
         /// <summary>
         /// 默认发件邮箱
