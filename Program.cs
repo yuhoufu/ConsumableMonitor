@@ -30,11 +30,11 @@ namespace ConsumableMonitor
                 x.RunAsLocalSystem();
 
                 // 服务描述信息
-                x.SetDescription("TestSchedule");
+                x.SetDescription("实验室管理系统，耗材库存邮件提醒");
                 // 服务显示名称
-                x.SetDisplayName("TestScheduleService");
+                x.SetDisplayName("ConsumableMonitorService");
                 // 服务名称
-                x.SetServiceName("TestScheduleService");
+                x.SetServiceName("ConsumableMonitorService");
 
             });
         }
