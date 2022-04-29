@@ -7,7 +7,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace ConsumableMonitor
+namespace Model
 {
     /// <summary>
     /// ºÄ²ÄÊµÌåÀà

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using MimeKit;
 using MailKit.Security;
 using System.IO;
 
-namespace ConsumableMonitor
+namespace Untility
 {
 
     /// <summary>

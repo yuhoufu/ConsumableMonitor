@@ -17,6 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj" />
+    <ProjectReference Include="..\Untility\Untility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="quartz.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

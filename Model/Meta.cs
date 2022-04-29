@@ -7,7 +7,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace ConsumableMonitor
+namespace Model
 {
     /// <summary>
     /// ember元数据实体类
