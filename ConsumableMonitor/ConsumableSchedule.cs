@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace ConsumableMonitor
 {
-    public class TestSchedule
+    public class ConsumableSchedule
     {
         readonly IScheduler scheduler = null;
 
-        public TestSchedule()
+        public ConsumableSchedule()
         {
             // 创建作业调度器
             scheduler = new StdSchedulerFactory().GetScheduler().Result;

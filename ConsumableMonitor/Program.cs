@@ -15,11 +15,11 @@ namespace ConsumableMonitor
             // 配置和运行宿主服务
             HostFactory.Run(x =>
             {
-                // 指定服务类型。这里设置为 TestSchedule
-                x.Service<TestSchedule>(s =>
+                // 指定服务类型。这里设置为 ConsumableSchedule
+                x.Service<ConsumableSchedule>(s =>
                 {
-                    // 通过 new TestSchedule() 构建一个服务实例 
-                    s.ConstructUsing(name => new TestSchedule());
+                    // 通过 new ConsumableSchedule() 构建一个服务实例 
+                    s.ConstructUsing(name => new ConsumableSchedule());
                     // 当服务启动后执行什么
                     s.WhenStarted(tc => tc.Start());
                     // 当服务停止后执行什么
